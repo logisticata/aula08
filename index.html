@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Políticas de estoques e armazenagem</title>
+    <meta charset="utf-8" />
+    <meta name="author" content=" Renata Oliveira" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.min.css" rel="stylesheet" />
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x67189c3ebf8492d99c4fcb1ab4bc585","expires":1}</script>
+    <script src="libs/himalaya/himalaya.js"></script>
+    <script src="libs/js-cookie/js.cookie.js"></script>
+    <link href="libs/editable/editable.css" rel="stylesheet" />
+    <script src="libs/editable/editable.js"></script>
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\"><\/i>","success":"<i class=\"fa fa-check\" style=\"color: #90BE6D\"><\/i>","error":"<i class=\"fa fa-times-circle\" style=\"color: #F94144\"><\/i>"})</script>
+    <script src="libs/xaringanExtra_fit-screen/fit-screen.js"></script>
+    <link href="libs/xaringanExtra-extra-styles/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <script src="libs/fabric/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Políticas de estoques e armazenagem
+]
+.subtitle[
+## Logística de Transportes e Armazenagem
+]
+.author[
+### <br></br>Renata Oliveira
+]
+
+---
+
+
+
+
+
+layout: true
+  
+&lt;div class="my-footer"&gt;
+&lt;span&gt;
+&lt;a href="https://places.education" target="_blank"&gt;https://places.education&lt;/a&gt;
+&lt;/span&gt;
+&lt;/div&gt; 
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Agenda da Aula
+
+.pull-left[
+### Parte 1: Fundamentos
+- O que são estoques?
+- Funções e tipos de estoques
+- Custos envolvidos
+- Trade-offs logísticos
+
+### Parte 2: Políticas de Estoques
+- Sistemas de revisão contínua
+- Sistemas de revisão periódica
+- Modelos de gestão (LEC, JIT, etc.)
+]
+
+.pull-right[
+### Parte 3: Armazenagem
+- Funções da armazenagem
+- Tipos de armazéns
+- Layout e equipamentos
+- Tecnologias aplicadas
+
+### Parte 4: Integração
+- Gestão integrada
+- Indicadores de desempenho
+- Casos práticos
+]
+
+---
+
+class: inverse, center, middle
+
+# Parte 1: Fundamentos de Estoques
+
+---
+
+# O que são Estoques?
+
+.pull-left[
+### Definição
+
+**Estoques** são acumulações de recursos materiais entre fases específicas de processos de transformação ou comercialização.
+
+- **Operacional**: Buffer entre etapas de processos
+- **Financeira**: Capital imobilizado
+- **Estratégica**: Garantia de disponibilidade
+- **Comercial**: Atendimento ao cliente
+]
+
+.pull-right[
+
+&lt;img src="index_files/figure-html/unnamed-chunk-2-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Funções dos Estoques
+
+**1. Função de Desacoplamento**
+Permite independência entre processos de produção, distribuição e consumo
+
+**2. Função de Segurança**
+Protege contra incertezas de demanda e fornecimento
+
+**3. Função de Ciclo**
+Atende variações regulares e previsíveis
+
+**4. Função de Antecipação**
+Prepara para sazonalidades ou eventos especiais
+
+**5. Função de Trânsito**
+Produtos em movimento entre pontos da cadeia de suprimentos
+
+---
+
+# Tipos de Estoques
+
+&lt;table class="table table-striped table-hover table-condensed" style="font-size: 30px; color: black; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Tipo &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Descrição &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Característica &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Matérias-Primas &lt;/td&gt;
+   &lt;td style="text-align:left;width: 35%; "&gt; Insumos para produção &lt;/td&gt;
+   &lt;td style="text-align:left;width: 35%; "&gt; Alto valor agregado futuro &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Produtos em Processo (WIP) &lt;/td&gt;
+   &lt;td style="text-align:left;width: 35%; "&gt; Itens em transformação &lt;/td&gt;
+   &lt;td style="text-align:left;width: 35%; "&gt; Valor parcialmente agregado &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Produtos Acabados &lt;/td&gt;
+   &lt;td style="text-align:left;width: 35%; "&gt; Prontos para venda/distribuição &lt;/td&gt;
+   &lt;td style="text-align:left;width: 35%; "&gt; Máximo valor agregado &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Materiais de Manutenção (MRO) &lt;/td&gt;
+   &lt;td style="text-align:left;width: 35%; "&gt; Manutenção, Reparo e Operação &lt;/td&gt;
+   &lt;td style="text-align:left;width: 35%; "&gt; Crítico para continuidade &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Estoque em Trânsito &lt;/td&gt;
+   &lt;td style="text-align:left;width: 35%; "&gt; Em movimento entre locais &lt;/td&gt;
+   &lt;td style="text-align:left;width: 35%; "&gt; Tempo de posse temporário &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Custos Associados aos Estoques
+
+.pull-left[
+### 1. Custos de Manutenção (Holding Costs)
+- Custo de capital (~ 15-25% ao ano)
+- Armazenagem (aluguel, mão de obra)
+- Seguros
+- Obsolescência e deterioração
+- Sistemas de controle
+]
+
+.pull-right[
+### 2. Custos de Pedido (Ordering Costs)
+- Processamento administrativo
+- Transporte e recebimento
+- Inspeção de qualidade
+- Emissão de documentos
+]
+
+---
+
+# Custos Associados aos Estoques
+
+.pull-left[
+### 3. Custos de Falta (Stockout Costs)
+- Vendas perdidas
+- Perda de clientes
+- Custos de emergência
+- Paradas de produção
+- Imagem da empresa
+]
+
+.pull-right[
+### 4. Custos de Aquisição
+- Preço do produto
+- Descontos por quantidade
+]
+
+---
+
+# Trade-offs na Gestão de Estoques
+
+## Gráfico de trade-offs
+
+&lt;img src="index_files/figure-html/unnamed-chunk-4-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+---
+
+class: inverse, center, middle
+
+# Parte 2: Políticas de Estoques
+
+---
+
+# Sistemas de Controle de Estoques
+
+## Classificação Principal
+
+.pull-left[
+**Sistema de Revisão Contínua (Q)**
+- Monitoramento permanente
+- Pedido quando atinge ponto de ressuprimento
+- Quantidade fixa (Q)
+- Intervalo variável
+
+**Vantagens:**
+- Menor estoque de segurança
+- Resposta rápida
+- Adequado para itens classe A
+]
+
+.pull-right[
+**Sistema de Revisão Periódica (P)**
+- Revisão em intervalos fixos
+- Pedido em momentos predefinidos
+- Quantidade variável
+- Intervalo fixo
+
+**Vantagens:**
+- Consolidação de pedidos
+- Menor custo administrativo
+- Adequado para itens classe C
+]
+
+---
+
+# Modelo do Lote Econômico de Compra (LEC)
+
+.pull-left[
+### Fórmula de Wilson
+
+`$$LEC = \sqrt{\frac{2 \times D \times P}{M}}$$`
+
+Onde:
+- **D** = Demanda anual (unidades)
+- **P** = Custo de pedido ($/pedido)
+- **M** = Custo de manutenção ($/unidade/ano)
+]
+
+.pull-right[
+### Pressupostos
+1. Demanda conhecida e constante
+2. Lead time constante
+3. Recebimento instantâneo
+4. Sem descontos por quantidade
+5. Custo de pedido fixo
+]
+
+---
+
+# Modelo do Lote Econômico de Compra (LEC)
+
+### Exemplo Prático
+
+.pull-left[
+D &lt;- 10000 # demanda anual    
+P &lt;- 200 # custo de pedido    
+M &lt;- 5 # custo de manutenção   
+]
+
+
+
+
+
+.pull-right[
+&lt;table class="table table-striped table-hover" style="font-size: 25px; color: black; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Parâmetro &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Valor &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 50%; font-weight: bold;"&gt; Demanda Anual (D) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 10.000 unidades &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 50%; font-weight: bold;"&gt; Custo de Pedido (S) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; $ 200 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 50%; font-weight: bold;"&gt; Custo de Manutenção (H) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; $ 5 /un/ano &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 50%; font-weight: bold;font-weight: bold;color: white !important;background-color: rgba(42, 157, 143, 255) !important;"&gt; LEC Calculado &lt;/td&gt;
+   &lt;td style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(42, 157, 143, 255) !important;"&gt; 894 unidades &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 50%; font-weight: bold;"&gt; Número de Pedidos/Ano &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 11.2 pedidos &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 50%; font-weight: bold;"&gt; Tempo entre Pedidos &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 32.6 dias &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 50%; font-weight: bold;"&gt; Custo Total Anual &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; $ 4.472 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+---
+
+# Estoque de Segurança
+
+### Conceito
+
+Quantidade adicional mantida para proteger contra incertezas na demanda e/ou no lead time
+
+
+`$$ES = Z \times \sigma_d \times \sqrt{LT}$$`
+
+Onde:
+- **Z** = Nível de serviço (distribuição normal)
+- **σ_d** = Desvio padrão da demanda
+- **LT** = Lead time
+
+
+---
+
+# Estoque de Segurança
+
+
+&lt;table class="table table-striped table-hover" style="font-size: 30px; color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Nível.de.Serviço &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Valor.Z &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Risco.de.Falta &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 90% &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.28 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 10% &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 95% &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.65 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 5% &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 98% &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.05 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2% &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 99% &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.33 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1% &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 99.9% &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.09 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0.1% &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+
+# Ponto de Ressuprimento (ROP)
+
+`$$ROP = (D_{média} \times LT) + ES$$`
+
+**Exemplo:**
+- Demanda média: 100 un/dia
+- Lead time: 10 dias
+- Nível de serviço: 95% (Z=1.65)
+- Desvio padrão: 20 un/dia
+
+`$$ES = 1.65 \times 20 \times \sqrt{10} = 104 \text{ unidades}$$`
+`$$ROP = (100 \times 10) + 104 = 1.104 \text{ unidades}$$`
+
+
+---
+
+# Curva ABC - Classificação de Estoques
+
+
+
+
+
+&lt;img src="index_files/figure-html/unnamed-chunk-10-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+---
+
+# Estratégias de Gestão por Classificação ABC
+
+&lt;table class="table table-striped table-hover table-condensed" style="font-size: 20px; color: black; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Aspecto &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Classe.A..20..itens..80..valor. &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Classe.B..25..itens..15..valor. &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Classe.C..55..itens..5..valor. &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;"&gt; Frequência de Revisão &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 235, 238, 255) !important;"&gt; Contínua/Diária &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Semanal &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(232, 245, 233, 255) !important;"&gt; Mensal/Bimestral &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;"&gt; Controle de Estoque &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 235, 238, 255) !important;"&gt; Rigoroso e detalhado &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Moderado &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(232, 245, 233, 255) !important;"&gt; Simplificado &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;"&gt; Estoque de Segurança &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 235, 238, 255) !important;"&gt; Calculado precisamente &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Moderado &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(232, 245, 233, 255) !important;"&gt; Alto ou baseado em regras &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;"&gt; Método de Previsão &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 235, 238, 255) !important;"&gt; Sofisticado (modelos estatísticos) &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Médio (análise de tendências) &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(232, 245, 233, 255) !important;"&gt; Simples (média móvel) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;"&gt; Relacionamento com Fornecedor &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 235, 238, 255) !important;"&gt; Parcerias estratégicas &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Bom relacionamento &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(232, 245, 233, 255) !important;"&gt; Transacional &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;"&gt; Nível de Serviço Alvo &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 235, 238, 255) !important;"&gt; 98-99% &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; 95-98% &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(232, 245, 233, 255) !important;"&gt; 90-95% &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+---
+
+# Just-in-Time (JIT) vs. Just-in-Case (JIC)
+
+.small[
+.pull-left[
+### Just-in-Time (JIT)
+**Filosofia:** "Estoque zero"
+
+**Princípios:**
+- Produção/entrega sob demanda
+- Redução radical de estoques
+- Fluxo contínuo
+- Qualidade perfeita
+- Parceria com fornecedores
+
+**Requisitos:**
+- ✓ Fornecedores confiáveis
+- ✓ Demanda estável
+- ✓ Processos padronizados
+- ✓ Qualidade garantida
+- ✓ Proximidade geográfica
+]
+
+.pull-right[
+### Just-in-Case (JIC)
+**Filosofia:** "Estoque de segurança"
+
+**Princípios:**
+- Proteção contra incertezas
+- Buffers entre processos
+- Aproveitamento de economias de escala
+- Flexibilidade
+
+**Vantagens:**
+- ✓ Proteção contra variações
+- ✓ Descontos por volume
+- ✓ Menor dependência de fornecedores
+- ✓ Flexibilidade operacional
+]]
+
+---
+
+# Comparação: JIT vs. JIC
+&lt;table class="table table-striped table-hover" style="font-size: 30px; color: black; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Critério &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; JIT &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; JIC &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 35%; font-weight: bold;"&gt; Nível de Estoque &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 255) !important;"&gt; Muito Baixo ⬇️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Alto ⬆️ &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 35%; font-weight: bold;"&gt; Custo de Manutenção &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 255) !important;"&gt; Muito Baixo ⬇️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Alto ⬆️ &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 35%; font-weight: bold;"&gt; Custo de Pedido &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 255) !important;"&gt; Alto ⬆️ (pedidos frequentes) &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Baixo ⬇️ (pedidos grandes) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 35%; font-weight: bold;"&gt; Risco de Falta &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 255) !important;"&gt; Alto ⬆️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Baixo ⬇️ &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 35%; font-weight: bold;"&gt; Flexibilidade &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 255) !important;"&gt; Baixa ⬇️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Alta ⬆️ &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 35%; font-weight: bold;"&gt; Complexidade de Gestão &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 255) !important;"&gt; Alta ⬆️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Média &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 35%; font-weight: bold;"&gt; Dependência de Fornecedores &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 255) !important;"&gt; Muito Alta ⬆️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Baixa ⬇️ &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 35%; font-weight: bold;"&gt; Investimento em Capital &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 255) !important;"&gt; Baixo ⬇️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Alto ⬆️ &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+---
+
+class: inverse, center, middle
+
+# Parte 3: Armazenagem
+
+---
+
+# Funções da Armazenagem
+
+.pull-left[
+ **1. Recebimento**
+- Descarga de veículos
+- Conferência quantitativa e qualitativa
+- Documentação
+
+**2. Estocagem**
+- Guarda de produtos
+- Preservação
+- Organização
+]
+
+.pull-right[
+**3. Separação de Pedidos (Picking)**
+- Seleção de itens
+- Consolidação de pedidos
+- Conferência
+
+**4. Expedição**
+- Preparação para transporte
+- Carregamento
+- Documentação de saída
+
+]
+
+---
+
+# Funções da Armazenagem
+
+**5. Movimentação Interna**
+- Transferências entre áreas
+- Reposição
+- Inventários
+
+---
+
+
+# Tipos de Armazéns
+&lt;table class="table table-striped table-hover table-condensed" style="font-size: 25px; color: black; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Tipo &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Características &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Principais.Aplicações &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Centro de Distribuição (CD) &lt;/td&gt;
+   &lt;td style="text-align:left;width: 40%; "&gt; Alto giro, grandes volumes, separação de pedidos &lt;/td&gt;
+   &lt;td style="text-align:left;width: 40%; "&gt; Varejo, e-commerce, distribuição &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Armazém de Fábrica &lt;/td&gt;
+   &lt;td style="text-align:left;width: 40%; "&gt; Matéria-prima e produtos acabados, próximo à produção &lt;/td&gt;
+   &lt;td style="text-align:left;width: 40%; "&gt; Indústria manufatureira &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Armazém Regional &lt;/td&gt;
+   &lt;td style="text-align:left;width: 40%; "&gt; Atende região específica, estoque intermediário &lt;/td&gt;
+   &lt;td style="text-align:left;width: 40%; "&gt; Distribuição multicanal &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Cross-Docking &lt;/td&gt;
+   &lt;td style="text-align:left;width: 40%; "&gt; Transferência direta sem estocagem &lt;/td&gt;
+   &lt;td style="text-align:left;width: 40%; "&gt; Consolidação de cargas, produtos perecíveis &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Armazém Vertical &lt;/td&gt;
+   &lt;td style="text-align:left;width: 40%; "&gt; Utilização de altura, sistemas automatizados &lt;/td&gt;
+   &lt;td style="text-align:left;width: 40%; "&gt; Áreas urbanas de alto custo &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Armazém Alfandegado &lt;/td&gt;
+   &lt;td style="text-align:left;width: 40%; "&gt; Operações de importação/exportação &lt;/td&gt;
+   &lt;td style="text-align:left;width: 40%; "&gt; Comércio exterior &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Princípios de Layout em Armazenagem
+
+.pull-left[
+### 1. Produtos de Alto Giro
+- Próximos à expedição
+- Fácil acesso
+- Menor distância de picking
+
+### 2. Compatibilidade
+- Produtos similares próximos
+- Evitar contaminação
+- Considerar temperatura e umidade
+
+]
+
+.pull-right[
+
+### 3. Utilização Cúbica
+- Aproveitar altura
+- Minimizar espaços vazios
+- Sistemas de armazenagem vertical
+
+### 4. Fluxo Contínuo
+- Evitar cruzamentos
+- FIFO ou LIFO conforme necessidade
+- Minimizar movimentações
+]
+
+---
+
+# Princípios de Layout em Armazenagem
+
+### 5. Flexibilidade
+- Permitir expansão
+- Adaptar-se a sazonalidades
+- Reconfiguração rápida
+
+### 6. Segurança
+- Corredores adequados
+- Iluminação
+- Sinalização clara
+- Rotas de emergência
+
+
+---
+
+# Equipamentos de Movimentação
+
+[AGV](https://www.youtube.com/watch?v=g12dyQhjX8w)   
+[AGV](https://www.youtube.com/watch?v=DfYjSgDC-ls)   
+[Amazon](https://www.youtube.com/watch?v=7Xa1-gz_23A)   
+[Amazon](https://www.youtube.com/watch?v=F_Am7jfDJ18)   
+[Ponte Rolante](https://www.youtube.com/watch?v=H3p3b2bXo1I)   
+[Paleteira manual](https://www.youtube.com/watch?v=OxXRzC0cGdM)   
+[Empilhadeira](https://www.youtube.com/watch?v=tvn15dfYHGw)   
+[Transelevador](https://www.youtube.com/watch?v=_Zrk5TwKTB8)
+
+---
+
+# Equipamentos de Movimentação
+
+&lt;img src="index_files/figure-html/unnamed-chunk-14-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Sistemas de Armazenagem
+
+.small[
+.pull-left[
+### Estruturas Porta-Paletes
+
+**Seletivo:**
+- Acesso direto a cada palete
+- Baixa densidade
+- Ideal para alta variedade
+
+**Drive-in/Drive-through:**
+- Alta densidade
+- LIFO ou FIFO
+- Produtos de baixo giro
+
+**Push-back:**
+- 2-6 paletes de profundidade
+- LIFO
+- Boa densidade
+]
+
+.pull-right[
+### Sistemas Dinâmicos
+
+**Flow-rack:**
+- Roletes ou gravidade
+- FIFO automático
+- Picking rápido
+
+**Cantilever:**
+- Produtos longos
+- Tubos, perfis, madeiras
+- Sem obstrução frontal
+
+**Mezanino:**
+- Aproveita altura
+- Múltiplos níveis
+- Produtos leves
+]]
+
+---
+
+# Tecnologias Aplicadas à Armazenagem
+
+&lt;table class="table table-striped table-hover table-condensed" style="font-size: 20px; color: black; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Tecnologia &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Benefícios &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Investimento &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 25%; font-weight: bold;background-color: rgba(232, 245, 233, 255) !important;"&gt; WMS (Warehouse Management System) &lt;/td&gt;
+   &lt;td style="text-align:left;width: 55%; background-color: rgba(232, 245, 233, 255) !important;"&gt; Controle total, otimização de espaço, rastreabilidade &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; background-color: rgba(232, 245, 233, 255) !important;"&gt; Alto &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 25%; font-weight: bold;"&gt; RFID (Radio-Frequency Identification) &lt;/td&gt;
+   &lt;td style="text-align:left;width: 55%; "&gt; Identificação automática, inventário rápido &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; "&gt; Médio-Alto &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 25%; font-weight: bold;"&gt; Código de Barras &lt;/td&gt;
+   &lt;td style="text-align:left;width: 55%; "&gt; Baixo custo, controle básico, amplamente adotado &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; "&gt; Baixo &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 25%; font-weight: bold;"&gt; Pick-to-Light / Put-to-Light &lt;/td&gt;
+   &lt;td style="text-align:left;width: 55%; "&gt; Reduz erros de separação, aumenta produtividade &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; "&gt; Médio &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 25%; font-weight: bold;"&gt; Sistemas de Voz &lt;/td&gt;
+   &lt;td style="text-align:left;width: 55%; "&gt; Mãos livres, ergonômico, reduz erros &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; "&gt; Médio &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 25%; font-weight: bold;"&gt; AGV/AMR (Robôs Autônomos) &lt;/td&gt;
+   &lt;td style="text-align:left;width: 55%; "&gt; Movimentação autônoma, 24/7, reduz custos &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; "&gt; Muito Alto &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 25%; font-weight: bold;"&gt; Drones para Inventário &lt;/td&gt;
+   &lt;td style="text-align:left;width: 55%; "&gt; Inventário sem interrupção, precisão &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; "&gt; Alto &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 25%; font-weight: bold;"&gt; IoT e Sensores &lt;/td&gt;
+   &lt;td style="text-align:left;width: 55%; "&gt; Monitoramento temperatura, umidade, localização &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; "&gt; Médio &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# WMS - Warehouse Management System
+
+.pull-left[
+### Principais Funcionalidades
+
+**1. Recebimento**
+   - Agendamento de descargas
+   - Conferência automática
+   - Endereçamento inteligente
+
+**2. Armazenagem**
+   - Slotting otimizado
+   - Controle de lotes/validades
+   - Rastreabilidade completa
+]
+
+.pull-right[
+**3. Separação**
+   - Roteirização de picking
+   - Priorização de pedidos
+   - Auditoria de separação
+
+**4. Expedição**
+   - Consolidação de cargas
+   - Documentação automática
+   - Rastreamento de envios
+]
+
+---
+
+# WMS - Warehouse Management System
+
+**5. Gestão**
+   - Indicadores em tempo real
+   - Gestão de mão de obra
+   - Inventários rotativos
+
+### ROI Típico
+- Redução de erros: 60-80%
+- Aumento de produtividade: 20-40%
+- Melhor utilização do espaço: 15-30%
+- Payback: 18-36 meses
+
+
+---
+
+class: inverse, center, middle
+
+# Parte 4: Integração e Gestão
+
+---
+
+# Indicadores de Desempenho (KPIs)
+
+&lt;table class="table table-striped table-hover table-condensed" style="font-size: 20px; color: black; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Categoria &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Indicador &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Fórmula &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Meta &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr grouplength="3"&gt;&lt;td colspan="4" style="background-color: #e3f2fd; color: #000;"&gt;&lt;strong&gt;Produtividade&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;width: 15%; font-weight: bold;padding-left: 2em;" indentlevel="1"&gt; Produtividade &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Linhas Separadas/Hora &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Total linhas / Total horas &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; 100 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 15%; font-weight: bold;padding-left: 2em;" indentlevel="1"&gt; Produtividade &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Paletes Movimentados/Operador &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Total paletes / Número operadores &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; 50 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 15%; font-weight: bold;padding-left: 2em;" indentlevel="1"&gt; Produtividade &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Pedidos Expedidos/Dia &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Pedidos completos / Dias úteis &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Depende &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="2"&gt;&lt;td colspan="4" style="background-color: #e8f5e9; color: #000;"&gt;&lt;strong&gt;Qualidade&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;width: 15%; font-weight: bold;padding-left: 2em;" indentlevel="1"&gt; Qualidade &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Acurácia de Inventário &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; (Itens corretos / Total itens) × 100 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; 99% &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 15%; font-weight: bold;padding-left: 2em;" indentlevel="1"&gt; Qualidade &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Taxa de Erro de Separação &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; (Erros / Total separado) × 100 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;lt; 0.5% &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="2"&gt;&lt;td colspan="4" style="background-color: #fff3e0; color: #000;"&gt;&lt;strong&gt;Utilização&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;width: 15%; font-weight: bold;padding-left: 2em;" indentlevel="1"&gt; Utilização &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Taxa de Ocupação &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; (Espaço ocupado / Espaço total) × 100 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 75-85% &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 15%; font-weight: bold;padding-left: 2em;" indentlevel="1"&gt; Utilização &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Giro de Estoque &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; CMV / Estoque médio &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; 6 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="2"&gt;&lt;td colspan="4" style="background-color: #ffebee; color: #000;"&gt;&lt;strong&gt;Custos&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;width: 15%; font-weight: bold;padding-left: 2em;" indentlevel="1"&gt; Custos &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Custo de Armazenagem/Unidade &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Custo total / Unidades armazenadas &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Minimizar &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 15%; font-weight: bold;padding-left: 2em;" indentlevel="1"&gt; Custos &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Custo Operacional/m² &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Custo operacional / Área &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Benchmark &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+
+# Gestão Integrada de Estoques e Armazenagem
+
+### Princípios da Integração
+
+.pull-left[
+**1. Visibilidade**
+   - Rastreamento em tempo real
+   - Compartilhamento de informações
+   - Transparência na cadeia
+
+**2. Sincronização**
+   - Alinhamento de processos
+   - Coordenação de fluxos
+   - Planejamento colaborativo
+]
+
+.pull-right[
+**3. Otimização Sistêmica**
+   - Decisões baseadas no todo
+   - Trade-offs conscientes
+   - Objetivos compartilhados
+
+
+**4. Flexibilidade**
+   - Resposta rápida a mudanças
+   - Adaptabilidade
+   - Resiliência
+]
+---
+
+# Gestão Integrada de Estoques e Armazenagem
+
+### Princípios da Integração
+
+**5. Melhoria Contínua**
+   - Análise de dados
+   - Identificação de gargalos
+   - Implementação de melhorias
+
+**6. Colaboração**
+   - Parcerias com fornecedores
+   - Relacionamento com clientes
+   - Integração de sistemas
+
+
+---
+
+# Desafios Contemporâneos
+&lt;table class="table table-striped table-hover table-condensed" style="font-size: 20px; color: black; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Desafio &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Impacto &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Soluções &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;background-color: rgba(248, 249, 250, 255) !important;"&gt; E-commerce e Omnichannel &lt;/td&gt;
+   &lt;td style="text-align:left;width: 35%; "&gt; Pedidos pequenos, alta frequência, entregas rápidas &lt;/td&gt;
+   &lt;td style="text-align:left;width: 45%; background-color: rgba(232, 245, 233, 255) !important;"&gt; Micro-fulfillment, dark stores, automação de picking &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;background-color: rgba(248, 249, 250, 255) !important;"&gt; Sustentabilidade &lt;/td&gt;
+   &lt;td style="text-align:left;width: 35%; "&gt; Pressão por redução de emissões, embalagens sustentáveis &lt;/td&gt;
+   &lt;td style="text-align:left;width: 45%; background-color: rgba(232, 245, 233, 255) !important;"&gt; Armazéns verdes, veículos elétricos, otimização de rotas &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;background-color: rgba(248, 249, 250, 255) !important;"&gt; Escassez de Mão de Obra &lt;/td&gt;
+   &lt;td style="text-align:left;width: 35%; "&gt; Dificuldade de contratação, necessidade de automação &lt;/td&gt;
+   &lt;td style="text-align:left;width: 45%; background-color: rgba(232, 245, 233, 255) !important;"&gt; Automação, robotização, gestão de talentos &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;background-color: rgba(248, 249, 250, 255) !important;"&gt; Volatilidade de Demanda &lt;/td&gt;
+   &lt;td style="text-align:left;width: 35%; "&gt; Dificulta previsão, aumenta necessidade de flexibilidade &lt;/td&gt;
+   &lt;td style="text-align:left;width: 45%; background-color: rgba(232, 245, 233, 255) !important;"&gt; Análise preditiva, estoques dinâmicos, postponement &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;background-color: rgba(248, 249, 250, 255) !important;"&gt; Custos Crescentes &lt;/td&gt;
+   &lt;td style="text-align:left;width: 35%; "&gt; Imóveis, energia, mão de obra em alta &lt;/td&gt;
+   &lt;td style="text-align:left;width: 45%; background-color: rgba(232, 245, 233, 255) !important;"&gt; Eficiência operacional, tecnologia, consolidação &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;background-color: rgba(248, 249, 250, 255) !important;"&gt; Expectativas de Clientes &lt;/td&gt;
+   &lt;td style="text-align:left;width: 35%; "&gt; Entregas mais rápidas, rastreamento, devoluções fáceis &lt;/td&gt;
+   &lt;td style="text-align:left;width: 45%; background-color: rgba(232, 245, 233, 255) !important;"&gt; Visibilidade, comunicação proativa, processos ágeis &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;!-- # Caso Prático 1: Empresa de E-commerce --&gt;
+
+&lt;!-- ### Situação --&gt;
+&lt;!-- Varejista online com 50.000 SKUs, 1.000 pedidos/dia --&gt;
+
+&lt;!-- ### Problemas Identificados --&gt;
+&lt;!-- - Taxa de erro de separação: 3% --&gt;
+&lt;!-- - Tempo médio de separação: 15 min/pedido --&gt;
+&lt;!-- - Acurácia de inventário: 92% --&gt;
+&lt;!-- - Custo operacional alto --&gt;
+
+&lt;!-- ### Soluções Implementadas --&gt;
+&lt;!-- 1. Implantação de WMS --&gt;
+&lt;!-- 2. Tecnologia Pick-to-Light --&gt;
+&lt;!-- 3. Reorganização por curva ABC --&gt;
+&lt;!-- 4. Inventário rotativo com RFID --&gt;
+
+&lt;!-- ### Resultados (12 meses) --&gt;
+&lt;!-- - ✅ Taxa de erro: 0.4% (redução de 87%) --&gt;
+&lt;!-- - ✅ Tempo de separação: 8 min/pedido (47% mais rápido) --&gt;
+&lt;!-- - ✅ Acurácia: 99.2% --&gt;
+&lt;!-- - ✅ Redução de custos: 25% --&gt;
+&lt;!-- - ✅ ROI: 18 meses --&gt;
+
+&lt;!-- --- --&gt;
+
+&lt;!-- # Caso Prático 2: Indústria Automotiva --&gt;
+
+&lt;!-- ### Situação --&gt;
+&lt;!-- Fábrica com produção JIT, múltiplos fornecedores --&gt;
+
+&lt;!-- ### Desafio --&gt;
+&lt;!-- Reduzir estoques sem comprometer produção --&gt;
+
+&lt;!-- ### Estratégia Implementada --&gt;
+
+&lt;!-- .pull-left[ --&gt;
+&lt;!-- **Antes:** --&gt;
+&lt;!-- - Estoque médio: 30 dias --&gt;
+&lt;!-- - 50 fornecedores independentes --&gt;
+&lt;!-- - Entregas semanais --&gt;
+&lt;!-- - Controle manual --&gt;
+&lt;!-- - Paradas por falta: 2/mês --&gt;
+&lt;!-- ] --&gt;
+
+&lt;!-- .pull-right[ --&gt;
+&lt;!-- **Depois:** --&gt;
+&lt;!-- - Estoque médio: 5 dias --&gt;
+&lt;!-- - 15 fornecedores parceiros --&gt;
+&lt;!-- - Entregas diárias (milk-run) --&gt;
+&lt;!-- - Sistema integrado (EDI) --&gt;
+&lt;!-- - Paradas: 0 (12 meses) --&gt;
+&lt;!-- ] --&gt;
+
+&lt;!-- ### Ganhos --&gt;
+&lt;!-- - Redução de 83% no estoque --&gt;
+&lt;!-- - Liberação de R$ 15 milhões em capital --&gt;
+&lt;!-- - Redução de 40% na área de armazenagem --&gt;
+&lt;!-- - Melhoria no relacionamento com fornecedores --&gt;
+
+---
+
+# Tendências Futuras
+
+### 1. **Automação e Robotização**
+- Armazéns totalmente automatizados
+- Cobots (robôs colaborativos)
+- IA para otimização de processos
+
+### 2. **Digitalização**
+- Gêmeos digitais (digital twins)
+- Blockchain para rastreabilidade
+- Big Data e Analytics avançado
+
+---
+
+# Tendências Futuras
+
+### 3. **Sustentabilidade**
+- Armazéns net-zero
+- Logística reversa estruturada
+- Economia circular
+
+### 4. **Personalização**
+- Mass customization
+- Postponement estratégico
+- Configuração sob demanda
+
+---
+
+# Tendências Futuras
+
+### 5. **Integração Física-Digital**
+- Realidade aumentada para treinamento
+- IoT ubíquo
+- Decisões em tempo real com IA
+
+---
+
+class: inverse, center, middle
+
+# Resumo e Conclusões
+
+---
+
+# Principais Takeaways
+
+.pull-left[
+### Estoques
+1. ✅ São necessários mas custosos
+2. ✅ Classificação ABC é fundamental
+3. ✅ Modelos matemáticos auxiliam decisões
+4. ✅ Estoque de segurança protege incertezas
+5. ✅ JIT vs JIC: contexto é fundamental
+]
+
+.pull-right[
+### Armazenagem
+1. ✅ Muito além de apenas guardar
+2. ✅ Layout impacta eficiência
+3. ✅ Tecnologia é diferencial competitivo
+]
+
+---
+
+# Principais Takeaways
+
+.pull-left[
+### Gestão Integrada
+1. ✅ Visão sistêmica é essencial
+2. ✅ KPIs direcionam melhorias
+3. ✅ Integração com supply chain
+4. ✅ Melhoria contínua
+]
+
+.pull-right[
+### Futuro
+1. ✅ Automação crescente
+2. ✅ Sustentabilidade obrigatória
+3. ✅ Digitalização acelerada
+4. ✅ Personalização e agilidade
+]
+
+---
+
+class: center, middle
+
+# Obrigado!
+
+# Dúvidas?
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "ratio": "16:9",
+  "highlightLines": true,
+  "highlightStyle": "solarized-light",
+  "countIncrementalSlides": false,
+  "slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>\n"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,922 @@
+---
+title: "Políticas de estoques e armazenagem"
+subtitle: "Logística de Transportes e Armazenagem"
+author: 
+  - <br></br>Renata Oliveira
+encoding: UTF-8
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["default", "xaringan-themer.css"]
+
+    nature:
+      ratio: "16:9"
+      highlightLines: true
+      highlightStyle: solarized-light
+      countIncrementalSlides: false
+      slideNumberFormat: |
+         <div class="progress-bar-container">
+           <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+           </div>
+         </div>
+
+---
+
+```{R child = "setup.Rmd"}
+```
+
+```{r xaringan-tile-view, echo=FALSE}
+xaringanExtra::use_tile_view()
+```
+
+```{r xaringan-editable, echo=FALSE}
+xaringanExtra::use_editable(expires = 1)
+```
+
+```{r xaringan-panelset, echo=FALSE, message=FALSE, warning=FALSE}
+xaringanExtra::use_panelset()
+```
+
+```{r xaringanExtra-clipboard, echo=FALSE}
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa fa-clipboard\"></i>",
+    success_text = "<i class=\"fa fa-check\" style=\"color: #90BE6D\"></i>",
+    error_text = "<i class=\"fa fa-times-circle\" style=\"color: #F94144\"></i>"
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+```
+
+```{r xaringan-fit-screen, echo=FALSE}
+xaringanExtra::use_fit_screen()
+```
+
+```{r xaringan-extra-styles, echo=FALSE}
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+```
+
+```{r xaringan-scribble, echo=FALSE}
+xaringanExtra::use_scribble()
+```
+
+
+# Agenda da Aula
+
+.pull-left[
+### Parte 1: Fundamentos
+- O que são estoques?
+- Funções e tipos de estoques
+- Custos envolvidos
+- Trade-offs logísticos
+
+### Parte 2: Políticas de Estoques
+- Sistemas de revisão contínua
+- Sistemas de revisão periódica
+- Modelos de gestão (LEC, JIT, etc.)
+]
+
+.pull-right[
+### Parte 3: Armazenagem
+- Funções da armazenagem
+- Tipos de armazéns
+- Layout e equipamentos
+- Tecnologias aplicadas
+
+### Parte 4: Integração
+- Gestão integrada
+- Indicadores de desempenho
+- Casos práticos
+]
+
+---
+
+class: inverse, center, middle
+
+# Parte 1: Fundamentos de Estoques
+
+---
+
+# O que são Estoques?
+
+.pull-left[
+### Definição
+
+**Estoques** são acumulações de recursos materiais entre fases específicas de processos de transformação ou comercialização.
+
+- **Operacional**: Buffer entre etapas de processos
+- **Financeira**: Capital imobilizado
+- **Estratégica**: Garantia de disponibilidade
+- **Comercial**: Atendimento ao cliente
+]
+
+.pull-right[
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+set.seed(123) 
+tempo <- seq(0, 365, by = 1) 
+estoque <- 1000 + 500*sin(tempo/60) + rnorm(366, 0, 50) 
+estoque[estoque < 0] <- 0
+
+df <- data.frame(tempo, estoque)
+
+ggplot(df, aes(x = tempo, y = estoque)) + 
+  geom_line(color = "#2E86AB", size = 1.2) + 
+  geom_hline(yintercept = mean(estoque), linetype = "dashed", color = "red", size = 1) + 
+  labs(title = "Exemplo de Comportamento de Estoque ao Longo do Tempo", x = "Dias", y = "Quantidade em Estoque") + theme_minimal(base_size = 14) + 
+  annotate("text", x = 300, y = mean(estoque) + 100, label = "Estoque Médio", color = "red", size = 5)
+```
+]
+
+---
+
+# Funções dos Estoques
+
+**1. Função de Desacoplamento**
+Permite independência entre processos de produção, distribuição e consumo
+
+**2. Função de Segurança**
+Protege contra incertezas de demanda e fornecimento
+
+**3. Função de Ciclo**
+Atende variações regulares e previsíveis
+
+**4. Função de Antecipação**
+Prepara para sazonalidades ou eventos especiais
+
+**5. Função de Trânsito**
+Produtos em movimento entre pontos da cadeia de suprimentos
+
+---
+
+# Tipos de Estoques
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+tipos_estoques <- data.frame( Tipo = c("Matérias-Primas", "Produtos em Processo (WIP)", "Produtos Acabados", "Materiais de Manutenção (MRO)", "Estoque em Trânsito"), Descrição = c("Insumos para produção", "Itens em transformação", "Prontos para venda/distribuição", "Manutenção, Reparo e Operação", "Em movimento entre locais"), Característica = c("Alto valor agregado futuro", "Valor parcialmente agregado", "Máximo valor agregado", "Crítico para continuidade", "Tempo de posse temporário") )
+
+kable(tipos_estoques, format = "html", escape = FALSE) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = TRUE, font_size = 30) %>% column_spec(1, bold = TRUE, color = "white", background = "#2E86AB") %>% column_spec(2, width = "35%") %>% column_spec(3, width = "35%")
+```
+
+---
+
+# Custos Associados aos Estoques
+
+.pull-left[
+### 1. Custos de Manutenção (Holding Costs)
+- Custo de capital (~ 15-25% ao ano)
+- Armazenagem (aluguel, mão de obra)
+- Seguros
+- Obsolescência e deterioração
+- Sistemas de controle
+]
+
+.pull-right[
+### 2. Custos de Pedido (Ordering Costs)
+- Processamento administrativo
+- Transporte e recebimento
+- Inspeção de qualidade
+- Emissão de documentos
+]
+
+---
+
+# Custos Associados aos Estoques
+
+.pull-left[
+### 3. Custos de Falta (Stockout Costs)
+- Vendas perdidas
+- Perda de clientes
+- Custos de emergência
+- Paradas de produção
+- Imagem da empresa
+]
+
+.pull-right[
+### 4. Custos de Aquisição
+- Preço do produto
+- Descontos por quantidade
+]
+
+---
+
+# Trade-offs na Gestão de Estoques
+
+## Gráfico de trade-offs
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+quantidade <- seq(10, 200, by = 10)
+
+custo_pedido <- 5000 / quantidade 
+custo_manutencao <- quantidade * 2.5 
+custo_total <- custo_pedido + custo_manutencao
+
+df_custos <- data.frame( quantidade = rep(quantidade, 3), custo = c(custo_pedido, custo_manutencao, custo_total), tipo = rep(c("Custo de Pedido", "Custo de Manutenção", "Custo Total"), each = length(quantidade)) )
+
+ggplot(df_custos, aes(x = quantidade, y = custo, color = tipo, linetype = tipo)) + geom_line(size = 1.5) + scale_color_manual(values = c("#E63946", "#457B9D", "#2A9D8F")) + scale_linetype_manual(values = c("dashed", "dashed", "solid")) + labs(title = "Trade-off entre Custos de Estoque", subtitle = "Ponto ótimo de pedido minimiza custo total", x = "Quantidade do Pedido (unidades)", y = "Custo ($)", color = "Tipo de Custo", linetype = "Tipo de Custo") + theme_minimal(base_size = 14) + theme(legend.position = "bottom", plot.title = element_text(face = "bold"))
+```
+---
+
+class: inverse, center, middle
+
+# Parte 2: Políticas de Estoques
+
+---
+
+# Sistemas de Controle de Estoques
+
+## Classificação Principal
+
+.pull-left[
+**Sistema de Revisão Contínua (Q)**
+- Monitoramento permanente
+- Pedido quando atinge ponto de ressuprimento
+- Quantidade fixa (Q)
+- Intervalo variável
+
+**Vantagens:**
+- Menor estoque de segurança
+- Resposta rápida
+- Adequado para itens classe A
+]
+
+.pull-right[
+**Sistema de Revisão Periódica (P)**
+- Revisão em intervalos fixos
+- Pedido em momentos predefinidos
+- Quantidade variável
+- Intervalo fixo
+
+**Vantagens:**
+- Consolidação de pedidos
+- Menor custo administrativo
+- Adequado para itens classe C
+]
+
+---
+
+# Modelo do Lote Econômico de Compra (LEC)
+
+.pull-left[
+### Fórmula de Wilson
+
+$$LEC = \sqrt{\frac{2 \times D \times P}{M}}$$
+
+Onde:
+- **D** = Demanda anual (unidades)
+- **P** = Custo de pedido ($/pedido)
+- **M** = Custo de manutenção ($/unidade/ano)
+]
+
+.pull-right[
+### Pressupostos
+1. Demanda conhecida e constante
+2. Lead time constante
+3. Recebimento instantâneo
+4. Sem descontos por quantidade
+5. Custo de pedido fixo
+]
+
+---
+
+# Modelo do Lote Econômico de Compra (LEC)
+
+### Exemplo Prático
+
+.pull-left[
+D <- 10000 # demanda anual    
+P <- 200 # custo de pedido    
+M <- 5 # custo de manutenção   
+]
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+D <- 10000     
+P <- 200 # custo de pedido    
+M <- 5 # custo de manutenção    
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+LEC <- sqrt((2 * D * P) / M)
+```
+
+.pull-right[
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+resultados <- data.frame( "Parâmetro" = c("Demanda Anual (D)", "Custo de Pedido (S)", "Custo de Manutenção (H)", "LEC Calculado", "Número de Pedidos/Ano", "Tempo entre Pedidos", "Custo Total Anual"), Valor = c(paste(format(D, big.mark = "."), "unidades"), paste("$", P), paste("$", M, "/un/ano"), paste(round(LEC, 0), "unidades"), paste(round(D/LEC, 1), "pedidos"), paste(round(365/(D/LEC), 1), "dias"), paste("$", format(round(sqrt(2*D*P*M), 0), big.mark = "."))) )
+
+kable(resultados, format = "html") %>% 
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE, font_size = 25) %>% 
+  column_spec(1, bold = TRUE, width = "50%") %>% 
+  row_spec(4, bold = TRUE, color = "white", background = "#2A9D8F")
+```
+]
+
+---
+
+# Estoque de Segurança
+
+### Conceito
+
+Quantidade adicional mantida para proteger contra incertezas na demanda e/ou no lead time
+
+
+$$ES = Z \times \sigma_d \times \sqrt{LT}$$
+
+Onde:
+- **Z** = Nível de serviço (distribuição normal)
+- **σ_d** = Desvio padrão da demanda
+- **LT** = Lead time
+
+
+---
+
+# Estoque de Segurança
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+niveis_servico <- data.frame("Nível de Serviço" = c("90%", "95%", "98%", "99%", "99.9%"), "Valor Z" = c(1.28, 1.65, 2.05, 2.33, 3.09), "Risco de Falta" = c("10%", "5%", "2%", "1%", "0.1%") )
+
+kable(niveis_servico, format = "html") %>% kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE, font_size = 30)
+```
+
+
+---
+
+# Ponto de Ressuprimento (ROP)
+
+$$ROP = (D_{média} \times LT) + ES$$
+
+**Exemplo:**
+- Demanda média: 100 un/dia
+- Lead time: 10 dias
+- Nível de serviço: 95% (Z=1.65)
+- Desvio padrão: 20 un/dia
+
+$$ES = 1.65 \times 20 \times \sqrt{10} = 104 \text{ unidades}$$
+$$ROP = (100 \times 10) + 104 = 1.104 \text{ unidades}$$
+
+
+---
+
+# Curva ABC - Classificação de Estoques
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+set.seed(456)
+
+n_itens <- 100 
+
+itens <- data.frame(item = 1:n_itens, valor = sort(rexp(n_itens, 0.01) * runif(n_itens, 500, 2000), decreasing = TRUE) )
+
+itens$percentual_valor <- itens$valor / sum(itens$valor) * 100 
+
+itens$acumulado <- cumsum(itens$percentual_valor) 
+
+itens$percentual_itens <- (1:n_itens / n_itens) * 100
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+itens$classe <- cut(itens$acumulado, breaks = c(0, 80, 95, 100), labels = c("A", "B", "C"), include.lowest = TRUE)
+
+ggplot(itens, aes(x = percentual_itens, y = acumulado)) + geom_line(size = 2, color = "#2E86AB") + geom_area(fill = "#2E86AB", alpha = 0.3) + geom_hline(yintercept = c(80, 95), linetype = "dashed", color = c("#E63946", "#F4A261"), size = 1) + geom_vline(xintercept = c(20, 45), linetype = "dashed", color = c("#E63946", "#F4A261"), size = 1) + annotate("text", x = 10, y = 90, label = "Classe A\n~20% itens\n~80% valor", size = 5, fontface = "bold", color = "#E63946") + annotate("text", x = 32, y = 50, label = "Classe B\n~25% itens\n~15% valor", size = 5, fontface = "bold", color = "#F4A261") + annotate("text", x = 70, y = 20, label = "Classe C\n~55% itens\n~5% valor", size = 5, fontface = "bold", color = "#2A9D8F") + scale_x_continuous(breaks = seq(0, 100, 20)) + scale_y_continuous(breaks = seq(0, 100, 20)) + labs(title = "Curva ABC - Lei de Pareto Aplicada aos Estoques", subtitle = "Concentração de valor em poucos itens", x = "Percentual de Itens (%)", y = "Percentual Acumulado de Valor (%)") + theme_minimal(base_size = 14) + theme(plot.title = element_text(face = "bold", size = 16))
+```
+---
+
+# Estratégias de Gestão por Classificação ABC
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+estrategias_abc <- data.frame( Aspecto = c("Frequência de Revisão", "Controle de Estoque", "Estoque de Segurança", "Método de Previsão", "Relacionamento com Fornecedor", "Nível de Serviço Alvo"), "Classe A (20% itens, 80% valor)" = c( "Contínua/Diária", "Rigoroso e detalhado", "Calculado precisamente", "Sofisticado (modelos estatísticos)", "Parcerias estratégicas", "98-99%"), "Classe B (25% itens, 15% valor)" = c( "Semanal", "Moderado", "Moderado", "Médio (análise de tendências)", "Bom relacionamento", "95-98%"), "Classe C (55% itens, 5% valor)" = c( "Mensal/Bimestral", "Simplificado", "Alto ou baseado em regras", "Simples (média móvel)", "Transacional", "90-95%") )
+
+kable(estrategias_abc, format = "html", escape = FALSE) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = TRUE, font_size = 20) %>%
+  column_spec(1, bold = TRUE, width = "20%") %>%
+  column_spec(2, background = "#ffebee") %>% column_spec(3, background = "#fff3e0") %>% 
+  column_spec(4, background = "#e8f5e9")
+```
+---
+
+# Just-in-Time (JIT) vs. Just-in-Case (JIC)
+
+.small[
+.pull-left[
+### Just-in-Time (JIT)
+**Filosofia:** "Estoque zero"
+
+**Princípios:**
+- Produção/entrega sob demanda
+- Redução radical de estoques
+- Fluxo contínuo
+- Qualidade perfeita
+- Parceria com fornecedores
+
+**Requisitos:**
+- ✓ Fornecedores confiáveis
+- ✓ Demanda estável
+- ✓ Processos padronizados
+- ✓ Qualidade garantida
+- ✓ Proximidade geográfica
+]
+
+.pull-right[
+### Just-in-Case (JIC)
+**Filosofia:** "Estoque de segurança"
+
+**Princípios:**
+- Proteção contra incertezas
+- Buffers entre processos
+- Aproveitamento de economias de escala
+- Flexibilidade
+
+**Vantagens:**
+- ✓ Proteção contra variações
+- ✓ Descontos por volume
+- ✓ Menor dependência de fornecedores
+- ✓ Flexibilidade operacional
+]]
+
+---
+
+# Comparação: JIT vs. JIC
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+comparacao <- data.frame( Critério = c("Nível de Estoque", "Custo de Manutenção", "Custo de Pedido", "Risco de Falta", "Flexibilidade", "Complexidade de Gestão", "Dependência de Fornecedores", "Investimento em Capital"), JIT = c("Muito Baixo ⬇️", "Muito Baixo ⬇️", "Alto ⬆️ (pedidos frequentes)", "Alto ⬆️", "Baixa ⬇️", "Alta ⬆️", "Muito Alta ⬆️", "Baixo ⬇️"), JIC = c("Alto ⬆️", "Alto ⬆️", "Baixo ⬇️ (pedidos grandes)", "Baixo ⬇️", "Alta ⬆️", "Média", "Baixa ⬇️", "Alto ⬆️") )
+
+kable(comparacao, format = "html", escape = FALSE) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = TRUE, font_size = 30) %>% 
+  column_spec(1, bold = TRUE, width = "35%") %>% 
+  column_spec(2, background = "#e3f2fd") %>% column_spec(3, background = "#fff3e0")
+```
+---
+
+class: inverse, center, middle
+
+# Parte 3: Armazenagem
+
+---
+
+# Funções da Armazenagem
+
+.pull-left[
+ **1. Recebimento**
+- Descarga de veículos
+- Conferência quantitativa e qualitativa
+- Documentação
+
+**2. Estocagem**
+- Guarda de produtos
+- Preservação
+- Organização
+]
+
+.pull-right[
+**3. Separação de Pedidos (Picking)**
+- Seleção de itens
+- Consolidação de pedidos
+- Conferência
+
+**4. Expedição**
+- Preparação para transporte
+- Carregamento
+- Documentação de saída
+
+]
+
+---
+
+# Funções da Armazenagem
+
+**5. Movimentação Interna**
+- Transferências entre áreas
+- Reposição
+- Inventários
+
+---
+
+
+# Tipos de Armazéns
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+tipos_armazens <- data.frame( Tipo = c("Centro de Distribuição (CD)", "Armazém de Fábrica", "Armazém Regional", "Cross-Docking", "Armazém Vertical", "Armazém Alfandegado"), Características = c( "Alto giro, grandes volumes, separação de pedidos", "Matéria-prima e produtos acabados, próximo à produção", "Atende região específica, estoque intermediário", "Transferência direta sem estocagem", "Utilização de altura, sistemas automatizados", "Operações de importação/exportação" ), "Principais Aplicações" = c( "Varejo, e-commerce, distribuição", "Indústria manufatureira", "Distribuição multicanal", "Consolidação de cargas, produtos perecíveis", "Áreas urbanas de alto custo", "Comércio exterior" ) )
+
+kable(tipos_armazens, format = "html", escape = FALSE) %>% 
+    kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = TRUE, font_size = 25) %>%
+  column_spec(1, bold = TRUE, color = "white", background = "#2E86AB", width = "20%") %>% 
+  column_spec(2, width = "40%") %>% column_spec(3, width = "40%")
+```
+
+---
+
+# Princípios de Layout em Armazenagem
+
+.pull-left[
+### 1. Produtos de Alto Giro
+- Próximos à expedição
+- Fácil acesso
+- Menor distância de picking
+
+### 2. Compatibilidade
+- Produtos similares próximos
+- Evitar contaminação
+- Considerar temperatura e umidade
+
+]
+
+.pull-right[
+
+### 3. Utilização Cúbica
+- Aproveitar altura
+- Minimizar espaços vazios
+- Sistemas de armazenagem vertical
+
+### 4. Fluxo Contínuo
+- Evitar cruzamentos
+- FIFO ou LIFO conforme necessidade
+- Minimizar movimentações
+]
+
+---
+
+# Princípios de Layout em Armazenagem
+
+### 5. Flexibilidade
+- Permitir expansão
+- Adaptar-se a sazonalidades
+- Reconfiguração rápida
+
+### 6. Segurança
+- Corredores adequados
+- Iluminação
+- Sinalização clara
+- Rotas de emergência
+
+
+---
+
+# Equipamentos de Movimentação
+
+[AGV](https://www.youtube.com/watch?v=g12dyQhjX8w)   
+[AGV](https://www.youtube.com/watch?v=DfYjSgDC-ls)   
+[Amazon](https://www.youtube.com/watch?v=7Xa1-gz_23A)   
+[Amazon](https://www.youtube.com/watch?v=F_Am7jfDJ18)   
+[Ponte Rolante](https://www.youtube.com/watch?v=H3p3b2bXo1I)   
+[Paleteira manual](https://www.youtube.com/watch?v=OxXRzC0cGdM)   
+[Empilhadeira](https://www.youtube.com/watch?v=tvn15dfYHGw)   
+[Transelevador](https://www.youtube.com/watch?v=_Zrk5TwKTB8)
+
+---
+
+# Equipamentos de Movimentação
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+equipamentos <- data.frame( Equipamento = c("Paleteira Manual", "Empilhadeira", "Trans-elevador", "AGV", "Ponte Rolante"), Capacidade = c(2, 8, 15, 5, 50), Altura = c(0.2, 6, 15, 1, 10), Custo = c(1, 5, 15, 20, 30), Automação = c(1, 2, 8, 10, 7) )
+
+equipamentos_long <- equipamentos %>% 
+  pivot_longer(cols = c(Capacidade, Altura, Custo, Automação), names_to = "Métrica", values_to = "Valor")
+
+ggplot(equipamentos_long, aes(x = Equipamento, y = Valor, fill = Métrica)) + 
+  geom_col(position = "dodge", alpha = 0.8) + scale_fill_manual(values = c("#E63946", "#457B9D", "#2A9D8F", "#F4A261")) +
+  labs(title = "Comparação de Equipamentos de Movimentação", subtitle = "Valores relativos (escala normalizada)", x = "", y = "Valor Relativo") + 
+  theme_minimal(base_size = 13) + theme(axis.text.x = element_text(angle = 15, hjust = 1), legend.position = "bottom", plot.title = element_text(face = "bold"))
+```
+
+---
+
+# Sistemas de Armazenagem
+
+.small[
+.pull-left[
+### Estruturas Porta-Paletes
+
+**Seletivo:**
+- Acesso direto a cada palete
+- Baixa densidade
+- Ideal para alta variedade
+
+**Drive-in/Drive-through:**
+- Alta densidade
+- LIFO ou FIFO
+- Produtos de baixo giro
+
+**Push-back:**
+- 2-6 paletes de profundidade
+- LIFO
+- Boa densidade
+]
+
+.pull-right[
+### Sistemas Dinâmicos
+
+**Flow-rack:**
+- Roletes ou gravidade
+- FIFO automático
+- Picking rápido
+
+**Cantilever:**
+- Produtos longos
+- Tubos, perfis, madeiras
+- Sem obstrução frontal
+
+**Mezanino:**
+- Aproveita altura
+- Múltiplos níveis
+- Produtos leves
+]]
+
+---
+
+# Tecnologias Aplicadas à Armazenagem
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+tecnologias <- data.frame( Tecnologia = c("WMS (Warehouse Management System)", "RFID (Radio-Frequency Identification)", "Código de Barras", "Pick-to-Light / Put-to-Light", "Sistemas de Voz", "AGV/AMR (Robôs Autônomos)", "Drones para Inventário", "IoT e Sensores"), Benefícios = c( "Controle total, otimização de espaço, rastreabilidade", "Identificação automática, inventário rápido", "Baixo custo, controle básico, amplamente adotado", "Reduz erros de separação, aumenta produtividade", "Mãos livres, ergonômico, reduz erros", "Movimentação autônoma, 24/7, reduz custos", "Inventário sem interrupção, precisão", "Monitoramento temperatura, umidade, localização" ), Investimento = c("Alto", "Médio-Alto", "Baixo", "Médio", "Médio", "Muito Alto", "Alto", "Médio") )
+
+kable(tecnologias, format = "html", escape = FALSE) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = TRUE, font_size = 20) %>%
+  column_spec(1, bold = TRUE, width = "25%") %>%
+  column_spec(2, width = "55%") %>% column_spec(3, width = "20%") %>% row_spec(1, background = "#e8f5e9") # Destaca WMS
+```
+
+---
+
+# WMS - Warehouse Management System
+
+.pull-left[
+### Principais Funcionalidades
+
+**1. Recebimento**
+   - Agendamento de descargas
+   - Conferência automática
+   - Endereçamento inteligente
+
+**2. Armazenagem**
+   - Slotting otimizado
+   - Controle de lotes/validades
+   - Rastreabilidade completa
+]
+
+.pull-right[
+**3. Separação**
+   - Roteirização de picking
+   - Priorização de pedidos
+   - Auditoria de separação
+
+**4. Expedição**
+   - Consolidação de cargas
+   - Documentação automática
+   - Rastreamento de envios
+]
+
+---
+
+# WMS - Warehouse Management System
+
+**5. Gestão**
+   - Indicadores em tempo real
+   - Gestão de mão de obra
+   - Inventários rotativos
+
+### ROI Típico
+- Redução de erros: 60-80%
+- Aumento de produtividade: 20-40%
+- Melhor utilização do espaço: 15-30%
+- Payback: 18-36 meses
+
+
+---
+
+class: inverse, center, middle
+
+# Parte 4: Integração e Gestão
+
+---
+
+# Indicadores de Desempenho (KPIs)
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+kpis <- data.frame( Categoria = c("Produtividade", "Produtividade", "Produtividade", "Qualidade", "Qualidade", "Utilização", "Utilização", "Custos", "Custos"), Indicador = c("Linhas Separadas/Hora", "Paletes Movimentados/Operador", "Pedidos Expedidos/Dia", "Acurácia de Inventário", "Taxa de Erro de Separação", "Taxa de Ocupação", "Giro de Estoque", "Custo de Armazenagem/Unidade", "Custo Operacional/m²"), Fórmula = c("Total linhas / Total horas", "Total paletes / Número operadores", "Pedidos completos / Dias úteis", "(Itens corretos / Total itens) × 100", "(Erros / Total separado) × 100", "(Espaço ocupado / Espaço total) × 100", "CMV / Estoque médio", "Custo total / Unidades armazenadas", "Custo operacional / Área"), Meta = c("> 100", "> 50", "Depende", "> 99%", "< 0.5%", "75-85%", "> 6", "Minimizar", "Benchmark") )
+
+kable(kpis, format = "html", escape = FALSE) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = TRUE, font_size = 20) %>%
+  column_spec(1, bold = TRUE, width = "15%") %>%
+  pack_rows("Produtividade", 1, 3, label_row_css = "background-color: #e3f2fd; color: #000;") %>%
+  pack_rows("Qualidade", 4, 5, label_row_css = "background-color: #e8f5e9; color: #000;") %>% 
+  pack_rows("Utilização", 6, 7, label_row_css = "background-color: #fff3e0; color: #000;") %>% 
+  pack_rows("Custos", 8, 9, label_row_css = "background-color: #ffebee; color: #000;")
+```
+
+
+---
+
+# Gestão Integrada de Estoques e Armazenagem
+
+### Princípios da Integração
+
+.pull-left[
+**1. Visibilidade**
+   - Rastreamento em tempo real
+   - Compartilhamento de informações
+   - Transparência na cadeia
+
+**2. Sincronização**
+   - Alinhamento de processos
+   - Coordenação de fluxos
+   - Planejamento colaborativo
+]
+
+.pull-right[
+**3. Otimização Sistêmica**
+   - Decisões baseadas no todo
+   - Trade-offs conscientes
+   - Objetivos compartilhados
+
+
+**4. Flexibilidade**
+   - Resposta rápida a mudanças
+   - Adaptabilidade
+   - Resiliência
+]
+---
+
+# Gestão Integrada de Estoques e Armazenagem
+
+### Princípios da Integração
+
+**5. Melhoria Contínua**
+   - Análise de dados
+   - Identificação de gargalos
+   - Implementação de melhorias
+
+**6. Colaboração**
+   - Parcerias com fornecedores
+   - Relacionamento com clientes
+   - Integração de sistemas
+
+
+---
+
+# Desafios Contemporâneos
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+desafios <- data.frame( Desafio = c("E-commerce e Omnichannel", "Sustentabilidade", "Escassez de Mão de Obra", "Volatilidade de Demanda", "Custos Crescentes", "Expectativas de Clientes"), Impacto = c( "Pedidos pequenos, alta frequência, entregas rápidas", "Pressão por redução de emissões, embalagens sustentáveis", "Dificuldade de contratação, necessidade de automação", "Dificulta previsão, aumenta necessidade de flexibilidade", "Imóveis, energia, mão de obra em alta", "Entregas mais rápidas, rastreamento, devoluções fáceis" ), Soluções = c( "Micro-fulfillment, dark stores, automação de picking", "Armazéns verdes, veículos elétricos, otimização de rotas", "Automação, robotização, gestão de talentos", "Análise preditiva, estoques dinâmicos, postponement", "Eficiência operacional, tecnologia, consolidação", "Visibilidade, comunicação proativa, processos ágeis" ) )
+
+kable(desafios, format = "html", escape = FALSE) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = TRUE, font_size = 20) %>%
+  column_spec(1, bold = TRUE, width = "20%", background = "#f8f9fa") %>% 
+  column_spec(2, width = "35%") %>%
+  column_spec(3, width = "45%", background = "#e8f5e9")
+```
+
+<!-- # Caso Prático 1: Empresa de E-commerce -->
+
+<!-- ### Situação -->
+<!-- Varejista online com 50.000 SKUs, 1.000 pedidos/dia -->
+
+<!-- ### Problemas Identificados -->
+<!-- - Taxa de erro de separação: 3% -->
+<!-- - Tempo médio de separação: 15 min/pedido -->
+<!-- - Acurácia de inventário: 92% -->
+<!-- - Custo operacional alto -->
+
+<!-- ### Soluções Implementadas -->
+<!-- 1. Implantação de WMS -->
+<!-- 2. Tecnologia Pick-to-Light -->
+<!-- 3. Reorganização por curva ABC -->
+<!-- 4. Inventário rotativo com RFID -->
+
+<!-- ### Resultados (12 meses) -->
+<!-- - ✅ Taxa de erro: 0.4% (redução de 87%) -->
+<!-- - ✅ Tempo de separação: 8 min/pedido (47% mais rápido) -->
+<!-- - ✅ Acurácia: 99.2% -->
+<!-- - ✅ Redução de custos: 25% -->
+<!-- - ✅ ROI: 18 meses -->
+
+<!-- --- -->
+
+<!-- # Caso Prático 2: Indústria Automotiva -->
+
+<!-- ### Situação -->
+<!-- Fábrica com produção JIT, múltiplos fornecedores -->
+
+<!-- ### Desafio -->
+<!-- Reduzir estoques sem comprometer produção -->
+
+<!-- ### Estratégia Implementada -->
+
+<!-- .pull-left[ -->
+<!-- **Antes:** -->
+<!-- - Estoque médio: 30 dias -->
+<!-- - 50 fornecedores independentes -->
+<!-- - Entregas semanais -->
+<!-- - Controle manual -->
+<!-- - Paradas por falta: 2/mês -->
+<!-- ] -->
+
+<!-- .pull-right[ -->
+<!-- **Depois:** -->
+<!-- - Estoque médio: 5 dias -->
+<!-- - 15 fornecedores parceiros -->
+<!-- - Entregas diárias (milk-run) -->
+<!-- - Sistema integrado (EDI) -->
+<!-- - Paradas: 0 (12 meses) -->
+<!-- ] -->
+
+<!-- ### Ganhos -->
+<!-- - Redução de 83% no estoque -->
+<!-- - Liberação de R$ 15 milhões em capital -->
+<!-- - Redução de 40% na área de armazenagem -->
+<!-- - Melhoria no relacionamento com fornecedores -->
+
+---
+
+# Tendências Futuras
+
+### 1. **Automação e Robotização**
+- Armazéns totalmente automatizados
+- Cobots (robôs colaborativos)
+- IA para otimização de processos
+
+### 2. **Digitalização**
+- Gêmeos digitais (digital twins)
+- Blockchain para rastreabilidade
+- Big Data e Analytics avançado
+
+---
+
+# Tendências Futuras
+
+### 3. **Sustentabilidade**
+- Armazéns net-zero
+- Logística reversa estruturada
+- Economia circular
+
+### 4. **Personalização**
+- Mass customization
+- Postponement estratégico
+- Configuração sob demanda
+
+---
+
+# Tendências Futuras
+
+### 5. **Integração Física-Digital**
+- Realidade aumentada para treinamento
+- IoT ubíquo
+- Decisões em tempo real com IA
+
+---
+
+class: inverse, center, middle
+
+# Resumo e Conclusões
+
+---
+
+# Principais Takeaways
+
+.pull-left[
+### Estoques
+1. ✅ São necessários mas custosos
+2. ✅ Classificação ABC é fundamental
+3. ✅ Modelos matemáticos auxiliam decisões
+4. ✅ Estoque de segurança protege incertezas
+5. ✅ JIT vs JIC: contexto é fundamental
+]
+
+.pull-right[
+### Armazenagem
+1. ✅ Muito além de apenas guardar
+2. ✅ Layout impacta eficiência
+3. ✅ Tecnologia é diferencial competitivo
+]
+
+---
+
+# Principais Takeaways
+
+.pull-left[
+### Gestão Integrada
+1. ✅ Visão sistêmica é essencial
+2. ✅ KPIs direcionam melhorias
+3. ✅ Integração com supply chain
+4. ✅ Melhoria contínua
+]
+
+.pull-right[
+### Futuro
+1. ✅ Automação crescente
+2. ✅ Sustentabilidade obrigatória
+3. ✅ Digitalização acelerada
+4. ✅ Personalização e agilidade
+]
+
+---
+
+class: center, middle
+
+# Obrigado!
+
+# Dúvidas?
