@@ -598,12 +598,12 @@ ggplot(equipamentos_long, aes(x = Equipamento, y = Valor, fill = Métrica)) +
 - Baixa densidade
 - Ideal para alta variedade
 
-**Drive-in/Drive-through:**
+**Drive-in/Drive-through:** [Exemplo](https://www.youtube.com/watch?v=M7rdBZj5n-w)
 - Alta densidade
 - LIFO ou FIFO
 - Produtos de baixo giro
 
-**Push-back:**
+**Push-back:** [Exemplo](https://www.youtube.com/watch?v=F6vNW7kqpug)
 - 2-6 paletes de profundidade
 - LIFO
 - Boa densidade
@@ -612,17 +612,17 @@ ggplot(equipamentos_long, aes(x = Equipamento, y = Valor, fill = Métrica)) +
 .pull-right[
 ### Sistemas Dinâmicos
 
-**Flow-rack:**
+**Flow-rack:** [Exemplo](https://www.youtube.com/watch?v=q_MTq1cjn2g)
 - Roletes ou gravidade
 - FIFO automático
 - Picking rápido
 
-**Cantilever:**
+**Cantilever:** [Exemplo](https://www.youtube.com/watch?v=GaqX-IHOd10)
 - Produtos longos
 - Tubos, perfis, madeiras
 - Sem obstrução frontal
 
-**Mezanino:**
+**Mezanino:** [Exemplo](https://www.youtube.com/watch?v=dceARrWlQ_A)
 - Aproveita altura
 - Múltiplos níveis
 - Produtos leves
