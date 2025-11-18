@@ -760,6 +760,7 @@ kable(kpis, format = "html", escape = FALSE) %>%
 ---
 
 # Desafios Contemporâneos
+
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 desafios <- data.frame( Desafio = c("E-commerce e Omnichannel", "Sustentabilidade", "Escassez de Mão de Obra", "Volatilidade de Demanda", "Custos Crescentes", "Expectativas de Clientes"), Impacto = c( "Pedidos pequenos, alta frequência, entregas rápidas", "Pressão por redução de emissões, embalagens sustentáveis", "Dificuldade de contratação, necessidade de automação", "Dificulta previsão, aumenta necessidade de flexibilidade", "Imóveis, energia, mão de obra em alta", "Entregas mais rápidas, rastreamento, devoluções fáceis" ), Soluções = c( "Micro-fulfillment, dark stores, automação de picking", "Armazéns verdes, veículos elétricos, otimização de rotas", "Automação, robotização, gestão de talentos", "Análise preditiva, estoques dinâmicos, postponement", "Eficiência operacional, tecnologia, consolidação", "Visibilidade, comunicação proativa, processos ágeis" ) )
 
@@ -793,8 +794,6 @@ kable(desafios, format = "html", escape = FALSE) %>%
 <!-- - ✅ Acurácia: 99.2% -->
 <!-- - ✅ Redução de custos: 25% -->
 <!-- - ✅ ROI: 18 meses -->
-
-<!-- --- -->
 
 <!-- # Caso Prático 2: Indústria Automotiva -->
 
