@@ -12,7 +12,7 @@
     <script src="libs/panelset/panelset.js"></script>
     <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
     <script src="libs/tile-view/tile-view.js"></script>
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x69cc968ffae4abb81efec4c63967fe8","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xb04eb43f42e4c57aaf693796bab32b7","expires":1}</script>
     <script src="libs/himalaya/himalaya.js"></script>
     <script src="libs/js-cookie/js.cookie.js"></script>
     <link href="libs/editable/editable.css" rel="stylesheet" />
@@ -30,6 +30,7 @@
     <script src="libs/kePrint/kePrint.js"></script>
     <link href="libs/lightable/lightable.css" rel="stylesheet" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="ufcimg-slides.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -127,7 +128,7 @@ class: inverse, center, middle
 
 .pull-right[
 
-&lt;img src="index_files/figure-html/unnamed-chunk-2-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-2-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -153,42 +154,13 @@ Produtos em movimento entre pontos da cadeia de suprimentos
 
 # Tipos de Estoques
 
-&lt;table class="table table-striped table-hover table-condensed" style="font-size: 30px; color: black; margin-left: auto; margin-right: auto;"&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; Tipo &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Descrição &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Característica &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Matérias-Primas &lt;/td&gt;
-   &lt;td style="text-align:left;width: 35%; "&gt; Insumos para produção &lt;/td&gt;
-   &lt;td style="text-align:left;width: 35%; "&gt; Alto valor agregado futuro &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Produtos em Processo (WIP) &lt;/td&gt;
-   &lt;td style="text-align:left;width: 35%; "&gt; Itens em transformação &lt;/td&gt;
-   &lt;td style="text-align:left;width: 35%; "&gt; Valor parcialmente agregado &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Produtos Acabados &lt;/td&gt;
-   &lt;td style="text-align:left;width: 35%; "&gt; Prontos para venda/distribuição &lt;/td&gt;
-   &lt;td style="text-align:left;width: 35%; "&gt; Máximo valor agregado &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Materiais de Manutenção (MRO) &lt;/td&gt;
-   &lt;td style="text-align:left;width: 35%; "&gt; Manutenção, Reparo e Operação &lt;/td&gt;
-   &lt;td style="text-align:left;width: 35%; "&gt; Crítico para continuidade &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Estoque em Trânsito &lt;/td&gt;
-   &lt;td style="text-align:left;width: 35%; "&gt; Em movimento entre locais &lt;/td&gt;
-   &lt;td style="text-align:left;width: 35%; "&gt; Tempo de posse temporário &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+| Tipo | Descrição | Característica |
+|---|---|---|
+| Matérias-Primas | Insumos para produção | Alto valor agregado futuro |
+| Produtos em Processo (WIP) | Itens em transformação | Valor parcialmente agregado |
+| Produtos Acabados | Prontos para venda/distribuição | Máximo valor agregado |
+| Materiais de Manutenção (MRO) | Manutenção, Reparo e Operação | Crítico para continuidade |
+| Estoque em Trânsito | Em movimento entre locais | Tempo de posse temporário |
 
 ---
 
@@ -236,7 +208,7 @@ Produtos em movimento entre pontos da cadeia de suprimentos
 
 ## Gráfico de trade-offs
 
-&lt;img src="index_files/figure-html/unnamed-chunk-4-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-3-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 ---
 
 class: inverse, center, middle
@@ -316,7 +288,7 @@ M &lt;- 5 # custo de manutenção
 
 
 .pull-right[
-&lt;table class="table table-striped table-hover" style="font-size: 25px; color: black; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped table-hover" style="font-size: 25px; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Parâmetro &lt;/th&gt;
@@ -337,8 +309,8 @@ M &lt;- 5 # custo de manutenção
    &lt;td style="text-align:left;"&gt; $ 5 /un/ano &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;width: 50%; font-weight: bold;font-weight: bold;color: white !important;background-color: rgba(42, 157, 143, 255) !important;"&gt; LEC Calculado &lt;/td&gt;
-   &lt;td style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(42, 157, 143, 255) !important;"&gt; 894 unidades &lt;/td&gt;
+   &lt;td style="text-align:left;width: 50%; font-weight: bold;font-weight: bold;color: white !important;background-color: rgba(42, 157, 143, 1) !important;"&gt; LEC Calculado &lt;/td&gt;
+   &lt;td style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(42, 157, 143, 1) !important;"&gt; 894 unidades &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;width: 50%; font-weight: bold;"&gt; Número de Pedidos/Ano &lt;/td&gt;
@@ -378,7 +350,7 @@ Onde:
 # Estoque de Segurança
 
 
-&lt;table class="table table-striped table-hover" style="font-size: 30px; color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped table-hover" style="font-size: 30px; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Nível.de.Serviço &lt;/th&gt;
@@ -440,12 +412,12 @@ Onde:
 
 
 
-&lt;img src="index_files/figure-html/unnamed-chunk-10-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-9-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 ---
 
 # Estratégias de Gestão por Classificação ABC
 
-&lt;table class="table table-striped table-hover table-condensed" style="font-size: 20px; color: black; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped table-hover table-condensed" style="font-size: 20px; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Aspecto &lt;/th&gt;
@@ -457,39 +429,39 @@ Onde:
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;width: 20%; font-weight: bold;"&gt; Frequência de Revisão &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 235, 238, 255) !important;"&gt; Contínua/Diária &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Semanal &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(232, 245, 233, 255) !important;"&gt; Mensal/Bimestral &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 235, 238, 1) !important;"&gt; Contínua/Diária &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 1) !important;"&gt; Semanal &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(232, 245, 233, 1) !important;"&gt; Mensal/Bimestral &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;width: 20%; font-weight: bold;"&gt; Controle de Estoque &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 235, 238, 255) !important;"&gt; Rigoroso e detalhado &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Moderado &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(232, 245, 233, 255) !important;"&gt; Simplificado &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 235, 238, 1) !important;"&gt; Rigoroso e detalhado &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 1) !important;"&gt; Moderado &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(232, 245, 233, 1) !important;"&gt; Simplificado &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;width: 20%; font-weight: bold;"&gt; Estoque de Segurança &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 235, 238, 255) !important;"&gt; Calculado precisamente &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Moderado &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(232, 245, 233, 255) !important;"&gt; Alto ou baseado em regras &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 235, 238, 1) !important;"&gt; Calculado precisamente &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 1) !important;"&gt; Moderado &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(232, 245, 233, 1) !important;"&gt; Alto ou baseado em regras &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;width: 20%; font-weight: bold;"&gt; Método de Previsão &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 235, 238, 255) !important;"&gt; Sofisticado (modelos estatísticos) &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Médio (análise de tendências) &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(232, 245, 233, 255) !important;"&gt; Simples (média móvel) &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 235, 238, 1) !important;"&gt; Sofisticado (modelos estatísticos) &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 1) !important;"&gt; Médio (análise de tendências) &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(232, 245, 233, 1) !important;"&gt; Simples (média móvel) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;width: 20%; font-weight: bold;"&gt; Relacionamento com Fornecedor &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 235, 238, 255) !important;"&gt; Parcerias estratégicas &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Bom relacionamento &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(232, 245, 233, 255) !important;"&gt; Transacional &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 235, 238, 1) !important;"&gt; Parcerias estratégicas &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 1) !important;"&gt; Bom relacionamento &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(232, 245, 233, 1) !important;"&gt; Transacional &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;width: 20%; font-weight: bold;"&gt; Nível de Serviço Alvo &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 235, 238, 255) !important;"&gt; 98-99% &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; 95-98% &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(232, 245, 233, 255) !important;"&gt; 90-95% &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 235, 238, 1) !important;"&gt; 98-99% &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 1) !important;"&gt; 95-98% &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(232, 245, 233, 1) !important;"&gt; 90-95% &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -537,7 +509,7 @@ Onde:
 ---
 
 # Comparação: JIT vs. JIC
-&lt;table class="table table-striped table-hover" style="font-size: 30px; color: black; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped table-hover" style="font-size: 30px; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Critério &lt;/th&gt;
@@ -548,43 +520,43 @@ Onde:
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;width: 35%; font-weight: bold;"&gt; Nível de Estoque &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 255) !important;"&gt; Muito Baixo ⬇️ &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Alto ⬆️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 1) !important;"&gt; Muito Baixo ⬇️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 1) !important;"&gt; Alto ⬆️ &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;width: 35%; font-weight: bold;"&gt; Custo de Manutenção &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 255) !important;"&gt; Muito Baixo ⬇️ &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Alto ⬆️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 1) !important;"&gt; Muito Baixo ⬇️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 1) !important;"&gt; Alto ⬆️ &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;width: 35%; font-weight: bold;"&gt; Custo de Pedido &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 255) !important;"&gt; Alto ⬆️ (pedidos frequentes) &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Baixo ⬇️ (pedidos grandes) &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 1) !important;"&gt; Alto ⬆️ (pedidos frequentes) &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 1) !important;"&gt; Baixo ⬇️ (pedidos grandes) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;width: 35%; font-weight: bold;"&gt; Risco de Falta &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 255) !important;"&gt; Alto ⬆️ &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Baixo ⬇️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 1) !important;"&gt; Alto ⬆️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 1) !important;"&gt; Baixo ⬇️ &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;width: 35%; font-weight: bold;"&gt; Flexibilidade &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 255) !important;"&gt; Baixa ⬇️ &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Alta ⬆️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 1) !important;"&gt; Baixa ⬇️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 1) !important;"&gt; Alta ⬆️ &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;width: 35%; font-weight: bold;"&gt; Complexidade de Gestão &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 255) !important;"&gt; Alta ⬆️ &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Média &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 1) !important;"&gt; Alta ⬆️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 1) !important;"&gt; Média &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;width: 35%; font-weight: bold;"&gt; Dependência de Fornecedores &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 255) !important;"&gt; Muito Alta ⬆️ &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Baixa ⬇️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 1) !important;"&gt; Muito Alta ⬆️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 1) !important;"&gt; Baixa ⬇️ &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;width: 35%; font-weight: bold;"&gt; Investimento em Capital &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 255) !important;"&gt; Baixo ⬇️ &lt;/td&gt;
-   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 255) !important;"&gt; Alto ⬆️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(227, 242, 253, 1) !important;"&gt; Baixo ⬇️ &lt;/td&gt;
+   &lt;td style="text-align:left;background-color: rgba(255, 243, 224, 1) !important;"&gt; Alto ⬆️ &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -636,7 +608,7 @@ class: inverse, center, middle
 
 
 # Tipos de Armazéns
-&lt;table class="table table-striped table-hover table-condensed" style="font-size: 25px; color: black; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped table-hover table-condensed" style="font-size: 25px; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Tipo &lt;/th&gt;
@@ -646,32 +618,32 @@ class: inverse, center, middle
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;width: 20%; font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Centro de Distribuição (CD) &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 1) !important;"&gt; Centro de Distribuição (CD) &lt;/td&gt;
    &lt;td style="text-align:left;width: 40%; "&gt; Alto giro, grandes volumes, separação de pedidos &lt;/td&gt;
    &lt;td style="text-align:left;width: 40%; "&gt; Varejo, e-commerce, distribuição &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;width: 20%; font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Armazém de Fábrica &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 1) !important;"&gt; Armazém de Fábrica &lt;/td&gt;
    &lt;td style="text-align:left;width: 40%; "&gt; Matéria-prima e produtos acabados, próximo à produção &lt;/td&gt;
    &lt;td style="text-align:left;width: 40%; "&gt; Indústria manufatureira &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;width: 20%; font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Armazém Regional &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 1) !important;"&gt; Armazém Regional &lt;/td&gt;
    &lt;td style="text-align:left;width: 40%; "&gt; Atende região específica, estoque intermediário &lt;/td&gt;
    &lt;td style="text-align:left;width: 40%; "&gt; Distribuição multicanal &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;width: 20%; font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Cross-Docking &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 1) !important;"&gt; Cross-Docking &lt;/td&gt;
    &lt;td style="text-align:left;width: 40%; "&gt; Transferência direta sem estocagem &lt;/td&gt;
    &lt;td style="text-align:left;width: 40%; "&gt; Consolidação de cargas, produtos perecíveis &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;width: 20%; font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Armazém Vertical &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 1) !important;"&gt; Armazém Vertical &lt;/td&gt;
    &lt;td style="text-align:left;width: 40%; "&gt; Utilização de altura, sistemas automatizados &lt;/td&gt;
    &lt;td style="text-align:left;width: 40%; "&gt; Áreas urbanas de alto custo &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;width: 20%; font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 255) !important;"&gt; Armazém Alfandegado &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;color: white !important;background-color: rgba(46, 134, 171, 1) !important;"&gt; Armazém Alfandegado &lt;/td&gt;
    &lt;td style="text-align:left;width: 40%; "&gt; Operações de importação/exportação &lt;/td&gt;
    &lt;td style="text-align:left;width: 40%; "&gt; Comércio exterior &lt;/td&gt;
   &lt;/tr&gt;
@@ -741,7 +713,7 @@ class: inverse, center, middle
 
 # Equipamentos de Movimentação
 
-&lt;img src="index_files/figure-html/unnamed-chunk-14-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-13-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -790,7 +762,7 @@ class: inverse, center, middle
 
 # Tecnologias Aplicadas à Armazenagem
 
-&lt;table class="table table-striped table-hover table-condensed" style="font-size: 20px; color: black; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped table-hover table-condensed" style="font-size: 20px; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Tecnologia &lt;/th&gt;
@@ -800,9 +772,9 @@ class: inverse, center, middle
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;width: 25%; font-weight: bold;background-color: rgba(232, 245, 233, 255) !important;"&gt; WMS (Warehouse Management System) &lt;/td&gt;
-   &lt;td style="text-align:left;width: 55%; background-color: rgba(232, 245, 233, 255) !important;"&gt; Controle total, otimização de espaço, rastreabilidade &lt;/td&gt;
-   &lt;td style="text-align:left;width: 20%; background-color: rgba(232, 245, 233, 255) !important;"&gt; Alto &lt;/td&gt;
+   &lt;td style="text-align:left;width: 25%; font-weight: bold;background-color: rgba(232, 245, 233, 1) !important;"&gt; WMS (Warehouse Management System) &lt;/td&gt;
+   &lt;td style="text-align:left;width: 55%; background-color: rgba(232, 245, 233, 1) !important;"&gt; Controle total, otimização de espaço, rastreabilidade &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; background-color: rgba(232, 245, 233, 1) !important;"&gt; Alto &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;width: 25%; font-weight: bold;"&gt; RFID (Radio-Frequency Identification) &lt;/td&gt;
@@ -898,7 +870,7 @@ class: inverse, center, middle
 
 # Indicadores de Desempenho (KPIs)
 
-&lt;table class="table table-striped table-hover table-condensed" style="font-size: 20px; color: black; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped table-hover table-condensed" style="font-size: 20px; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Categoria &lt;/th&gt;
@@ -1021,7 +993,7 @@ class: inverse, center, middle
 
 # Desafios Contemporâneos
 
-&lt;table class="table table-striped table-hover table-condensed" style="font-size: 20px; color: black; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table table-striped table-hover table-condensed" style="font-size: 20px; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Desafio &lt;/th&gt;
@@ -1031,34 +1003,34 @@ class: inverse, center, middle
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;width: 20%; font-weight: bold;background-color: rgba(248, 249, 250, 255) !important;"&gt; E-commerce e Omnichannel &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;background-color: rgba(248, 249, 250, 1) !important;"&gt; E-commerce e Omnichannel &lt;/td&gt;
    &lt;td style="text-align:left;width: 35%; "&gt; Pedidos pequenos, alta frequência, entregas rápidas &lt;/td&gt;
-   &lt;td style="text-align:left;width: 45%; background-color: rgba(232, 245, 233, 255) !important;"&gt; Micro-fulfillment, dark stores, automação de picking &lt;/td&gt;
+   &lt;td style="text-align:left;width: 45%; background-color: rgba(232, 245, 233, 1) !important;"&gt; Micro-fulfillment, dark stores, automação de picking &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;width: 20%; font-weight: bold;background-color: rgba(248, 249, 250, 255) !important;"&gt; Sustentabilidade &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;background-color: rgba(248, 249, 250, 1) !important;"&gt; Sustentabilidade &lt;/td&gt;
    &lt;td style="text-align:left;width: 35%; "&gt; Pressão por redução de emissões, embalagens sustentáveis &lt;/td&gt;
-   &lt;td style="text-align:left;width: 45%; background-color: rgba(232, 245, 233, 255) !important;"&gt; Armazéns verdes, veículos elétricos, otimização de rotas &lt;/td&gt;
+   &lt;td style="text-align:left;width: 45%; background-color: rgba(232, 245, 233, 1) !important;"&gt; Armazéns verdes, veículos elétricos, otimização de rotas &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;width: 20%; font-weight: bold;background-color: rgba(248, 249, 250, 255) !important;"&gt; Escassez de Mão de Obra &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;background-color: rgba(248, 249, 250, 1) !important;"&gt; Escassez de Mão de Obra &lt;/td&gt;
    &lt;td style="text-align:left;width: 35%; "&gt; Dificuldade de contratação, necessidade de automação &lt;/td&gt;
-   &lt;td style="text-align:left;width: 45%; background-color: rgba(232, 245, 233, 255) !important;"&gt; Automação, robotização, gestão de talentos &lt;/td&gt;
+   &lt;td style="text-align:left;width: 45%; background-color: rgba(232, 245, 233, 1) !important;"&gt; Automação, robotização, gestão de talentos &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;width: 20%; font-weight: bold;background-color: rgba(248, 249, 250, 255) !important;"&gt; Volatilidade de Demanda &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;background-color: rgba(248, 249, 250, 1) !important;"&gt; Volatilidade de Demanda &lt;/td&gt;
    &lt;td style="text-align:left;width: 35%; "&gt; Dificulta previsão, aumenta necessidade de flexibilidade &lt;/td&gt;
-   &lt;td style="text-align:left;width: 45%; background-color: rgba(232, 245, 233, 255) !important;"&gt; Análise preditiva, estoques dinâmicos, postponement &lt;/td&gt;
+   &lt;td style="text-align:left;width: 45%; background-color: rgba(232, 245, 233, 1) !important;"&gt; Análise preditiva, estoques dinâmicos, postponement &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;width: 20%; font-weight: bold;background-color: rgba(248, 249, 250, 255) !important;"&gt; Custos Crescentes &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;background-color: rgba(248, 249, 250, 1) !important;"&gt; Custos Crescentes &lt;/td&gt;
    &lt;td style="text-align:left;width: 35%; "&gt; Imóveis, energia, mão de obra em alta &lt;/td&gt;
-   &lt;td style="text-align:left;width: 45%; background-color: rgba(232, 245, 233, 255) !important;"&gt; Eficiência operacional, tecnologia, consolidação &lt;/td&gt;
+   &lt;td style="text-align:left;width: 45%; background-color: rgba(232, 245, 233, 1) !important;"&gt; Eficiência operacional, tecnologia, consolidação &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;width: 20%; font-weight: bold;background-color: rgba(248, 249, 250, 255) !important;"&gt; Expectativas de Clientes &lt;/td&gt;
+   &lt;td style="text-align:left;width: 20%; font-weight: bold;background-color: rgba(248, 249, 250, 1) !important;"&gt; Expectativas de Clientes &lt;/td&gt;
    &lt;td style="text-align:left;width: 35%; "&gt; Entregas mais rápidas, rastreamento, devoluções fáceis &lt;/td&gt;
-   &lt;td style="text-align:left;width: 45%; background-color: rgba(232, 245, 233, 255) !important;"&gt; Visibilidade, comunicação proativa, processos ágeis &lt;/td&gt;
+   &lt;td style="text-align:left;width: 45%; background-color: rgba(232, 245, 233, 1) !important;"&gt; Visibilidade, comunicação proativa, processos ágeis &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1219,7 +1191,7 @@ class: center, middle
   "highlightLines": true,
   "highlightStyle": "solarized-light",
   "countIncrementalSlides": false,
-  "slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>\n"
+  "slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

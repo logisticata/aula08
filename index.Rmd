@@ -7,7 +7,7 @@ encoding: UTF-8
 output:
   xaringan::moon_reader:
     lib_dir: libs
-    css: ["default", "xaringan-themer.css"]
+    css: ["default", "xaringan-themer.css", "ufcimg-slides.css"]
 
     nature:
       ratio: "16:9"
@@ -19,7 +19,6 @@ output:
            <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
            </div>
          </div>
-
 ---
 
 ```{R child = "setup.Rmd"}
@@ -154,12 +153,13 @@ Produtos em movimento entre pontos da cadeia de suprimentos
 
 # Tipos de Estoques
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-
-tipos_estoques <- data.frame( Tipo = c("Matérias-Primas", "Produtos em Processo (WIP)", "Produtos Acabados", "Materiais de Manutenção (MRO)", "Estoque em Trânsito"), Descrição = c("Insumos para produção", "Itens em transformação", "Prontos para venda/distribuição", "Manutenção, Reparo e Operação", "Em movimento entre locais"), Característica = c("Alto valor agregado futuro", "Valor parcialmente agregado", "Máximo valor agregado", "Crítico para continuidade", "Tempo de posse temporário") )
-
-kable(tipos_estoques, format = "html", escape = FALSE) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = TRUE, font_size = 30) %>% column_spec(1, bold = TRUE, color = "white", background = "#2E86AB") %>% column_spec(2, width = "35%") %>% column_spec(3, width = "35%")
-```
+| Tipo | Descrição | Característica |
+|---|---|---|
+| Matérias-Primas | Insumos para produção | Alto valor agregado futuro |
+| Produtos em Processo (WIP) | Itens em transformação | Valor parcialmente agregado |
+| Produtos Acabados | Prontos para venda/distribuição | Máximo valor agregado |
+| Materiais de Manutenção (MRO) | Manutenção, Reparo e Operação | Crítico para continuidade |
+| Estoque em Trânsito | Em movimento entre locais | Tempo de posse temporário |
 
 ---
 
